@@ -1,0 +1,28 @@
+system: mackeyglass
+data_generation:
+  gamma: 0.1
+  beta: 0.2
+  tau: 17.0
+  n: 10.0
+  reference_state: [0.5]
+  dt: 1.0
+  duration: 112000.0
+  burn_in_steps: 12000
+  initial_condition_noise_std: 1.0
+preprocessing:
+  num_delay_samples: 30
+  sampling_stride: 1
+split:
+  train_valid_ratio: 0.5
+  train_ratio: 0.9
+data_dir: data
+evaluation:
+  steps_per_lt: 175.2
+  horizon_lt: 5.0
+  num_rollout_starts: 3000
+  vpt_epsilons: [0.5]
+  vrmse_windows_lt: [[0.5, 0.7]]
+  vrmse_eps: 1.0e-7
+  vpt_sigma_eps: 1.0e-12
+  rollout_seed: 0
+  rollout_svd_rank: 0.999

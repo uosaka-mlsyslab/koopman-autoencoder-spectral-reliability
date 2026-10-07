@@ -1,0 +1,55 @@
+[project]
+name = "koopman-autoencoder-spectral-reliability"
+version = "0.1.0"
+description = "Reproduction code for Understanding Latent-Dimension Scaling in Dynamical-System Learning through Spectral Reliability"
+readme = "README.md"
+authors = [
+  { name = "Itsushi Sakata" },
+  { name = "Yuta Miyauchi" },
+  { name = "Yoshinobu Kawahara" },
+]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.13,<3.14"
+# Include undeclared pykoopman and jitcdde runtime dependencies and pin torchdiffeq source.
+dependencies = [
+  "torch==2.7.1+cu126", "numpy==2.5.2", "scipy==1.18.1", "pyyaml==6.0.3",
+  "matplotlib==3.11.1", "pykoopman==1.0.5", "pydmd==0.4.1", "reservoirpy==0.4.1",
+  "jitcdde==1.8.3", "symengine==0.14.1", "scikit-learn==1.9.0",
+  "scienceplots==2.2.2", "setuptools==78.1.1", "lightning==2.6.6",
+  "optht==0.2.0", "derivative==0.6.3", "torchmetrics==1.9.0",
+  "torchdiffeq @ https://github.com/rtqichen/torchdiffeq/archive/657943acefa826ef04c025ebeb1ff5e9d60dc268.tar.gz",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.4,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "spectral_reliability"
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[tool.uv]
+# Override pykoopman's numerical-stack metadata.
+override-dependencies = [
+  "torch==2.7.1+cu126", "numpy==2.5.2", "scipy==1.18.1", "matplotlib==3.11.1",
+  "scikit-learn==1.9.0", "lightning==2.6.6",
+]
+
+[tool.ruff]
+required-version = "==0.16.10"
+line-length = 79
+target-version = "py313"
+
+[tool.ruff.lint]
+extend-select = ["E", "W", "F", "I", "B", "UP", "N", "SIM", "C4", "RUF", "PL"]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72

@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Generated data, pretrained checkpoints, runs and figures
+/data/
+/checkpoints/
+/outputs/
+/figures/
+/results/arrays/
+
+# koopmanAE's model.py (GPL-3.0), downloaded on first use of the Consistent KAE baseline
+/baselines/
+

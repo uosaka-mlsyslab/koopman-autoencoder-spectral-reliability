@@ -1,0 +1,6 @@
+base: configs/baselines/{model.name}.yaml
+axes:
+  system: [rossler, lorenz63, duffing, mackeyglass, lorenz96, ks]
+  model.name: [esn, kernel_dmd, neural_ode, consistent_kae]
+  latent_multiplier: [1, 2, 4, 8, 16]
+  seed: [0, 1, 2, 3, 4]

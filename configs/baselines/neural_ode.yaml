@@ -1,0 +1,27 @@
+system: lorenz63
+latent_multiplier: 1
+seed: 0
+data: configs/data/{system}.yaml
+output:
+  dir: outputs
+model:
+  name: neural_ode
+  latent_dim: input
+  scale_inputs: true
+  rollout_batch_size: 500
+  hidden_dim: 128
+  encoder_depth: 1
+  dynamics_depth: 2
+  decoder_depth: 1
+  learning_rate: 1.0e-3
+  weight_decay: 0.0
+  epochs: 300
+  batch_size: 8192
+  rollout_steps: num_delay_samples
+  method: dopri5
+  optimizer: adam
+  gradclip: 1.0
+  activation: tanh
+  precision: float32
+  rtol: 1.0e-7
+  atol: 1.0e-9

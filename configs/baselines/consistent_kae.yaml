@@ -1,0 +1,29 @@
+system: lorenz63
+latent_multiplier: 1
+seed: 0
+data: configs/data/{system}.yaml
+output:
+  dir: outputs
+model:
+  name: consistent_kae
+  latent_dim: input
+  scale_inputs: true
+  rollout_batch_size: 500
+  hidden_width: latent
+  steps: 4
+  steps_back: 4
+  lamb: 1.0
+  nu: 0.01
+  eta: 0.001
+  lr: 0.001
+  wd: 0.0
+  epochs: 100
+  batch: 1024
+  gradclip: 0.05
+  init_scale: 0.95
+  evaluation_batch_size: 16384
+  lr_update: [5, 33, 67, 83]
+  lr_decay: 0.2
+  optimizer: adamw
+  activation: tanh
+  precision: float32

@@ -1,0 +1,8 @@
+base: configs/koopman/{system}.yaml
+axes:
+  system: [rossler, lorenz63, duffing, mackeyglass, lorenz96, ks]
+  training.procedure: [two_stage, joint]
+  loss.type: [latent_prediction, spectral_residual]
+  loss.operator_norm_weight: [0.0, 0.01]
+  latent_multiplier: [1, 2, 4, 8, 16]
+  seed: [0, 1, 2, 3, 4]

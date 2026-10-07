@@ -1,0 +1,14 @@
+system: lorenz63
+latent_multiplier: 1
+seed: 0
+data: configs/data/{system}.yaml
+output:
+  dir: outputs
+model:
+  name: kernel_dmd
+  latent_dim: input
+  scale_inputs: true
+  rollout_batch_size: 500
+  gamma: 1.0
+  include_state: false
+  svd_rank: -1

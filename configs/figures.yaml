@@ -1,0 +1,31 @@
+systems: [rossler, lorenz63, duffing, mackeyglass, lorenz96, ks]
+scaling:
+  grid: configs/koopman.yaml
+  variants: [latent_prediction_two_stage, latent_prediction_penalty_two_stage, spectral_residual_two_stage, spectral_residual_penalty_two_stage]
+  baseline_reference: spectral_residual_two_stage
+  baselines: [esn, kernel_dmd, neural_ode, consistent_kae]
+  vrmse_window_index: 0
+  quantiles: [0.25, 0.5, 0.75]
+  linear_y_cap: 10.0
+  log_y_cap: 100.0
+  linear_padding_fraction: 0.05
+  log_padding_factor: 1.4
+pseudospectra:
+  seed: 0
+  latent_multiplier: 16
+  variants: [latent_prediction_two_stage, latent_prediction_penalty_two_stage, spectral_residual_two_stage, spectral_residual_penalty_two_stage, latent_prediction_joint, latent_prediction_penalty_joint, spectral_residual_joint, spectral_residual_penalty_joint]
+  splits: [train, valid, test]
+  half_width: 1.45
+  grid_points_per_axis: 150
+  contour_levels: 25
+  encoder_batch_size: 65536
+attractors:
+  seed: 0
+  latent_multiplier: 16
+  variants: [latent_prediction_two_stage, latent_prediction_penalty_two_stage, spectral_residual_two_stage, spectral_residual_penalty_two_stage, latent_prediction_joint, latent_prediction_penalty_joint, spectral_residual_joint, spectral_residual_penalty_joint]
+  model_groups:
+    two_stage: [latent_prediction_two_stage, latent_prediction_penalty_two_stage, spectral_residual_two_stage, spectral_residual_penalty_two_stage]
+    joint: [latent_prediction_joint, latent_prediction_penalty_joint, spectral_residual_joint, spectral_residual_penalty_joint]
+  split: test
+  prediction_horizons_lt: [0.2, 0.6, 1.0]
+  window_lt: 5.0
